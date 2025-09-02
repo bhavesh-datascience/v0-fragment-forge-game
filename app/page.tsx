@@ -21,11 +21,11 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen ff-hero-gradient text-foreground relative">
+    <main className="min-h-screen text-foreground relative">
       {/* <TechBg opacity={0.75} /> */}
       <Header />
       <section className="mx-auto max-w-3xl px-4 py-12">
-        <Card className="relative mx-auto w-full rounded-2xl bg-card/60 backdrop-blur-md ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
+        <Card className="relative mx-auto w-full rounded-2xl bg-card ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
           <CardHeader className="text-center">
             {/* badge */}
             <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-[rgba(255,184,0,0.2)] ring-1 ring-[rgba(255,184,0,0.4)] shadow-[0_0_20px_rgba(255,184,0,0.35)]">
