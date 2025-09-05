@@ -2,13 +2,13 @@
 
 import { ReactNode, createContext, useContext, useEffect, useMemo, useReducer, useState } from "react"
 
-// UPDATED: This type now matches your new questions.json format
 export type Question = {
   id: number;
-  prompt: string;
+  question: string;
   options: string[];
-  correctIndex: number;
+  answer: string;
   isTrap: boolean;
+  explanation: string;
 };
 
 export type GameState = {
