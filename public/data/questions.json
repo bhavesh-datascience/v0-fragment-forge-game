@@ -1,70 +1,402 @@
 [
-  { "id": 1, "prompt": "What is 3 + 4?", "options": ["7", "8", "6", "9"], "correctIndex": 0, "isTrap": false },
-  { "id": 2, "prompt": "What is 4 + 5?", "options": ["9", "10", "8", "11"], "correctIndex": 0, "isTrap": false },
-  { "id": 3, "prompt": "What is 5 + 6?", "options": ["11", "12", "10", "13"], "correctIndex": 0, "isTrap": true },
-  { "id": 4, "prompt": "What is 6 + 7?", "options": ["13", "14", "12", "15"], "correctIndex": 0, "isTrap": false },
-  { "id": 5, "prompt": "What is 7 + 8?", "options": ["15", "16", "14", "17"], "correctIndex": 0, "isTrap": true },
-  { "id": 6, "prompt": "What is 8 + 9?", "options": ["17", "18", "16", "19"], "correctIndex": 0, "isTrap": false },
-  { "id": 7, "prompt": "What is 9 + 10?", "options": ["19", "20", "18", "21"], "correctIndex": 0, "isTrap": true },
-  { "id": 8, "prompt": "What is 10 + 11?", "options": ["21", "22", "20", "23"], "correctIndex": 0, "isTrap": false },
-  { "id": 9, "prompt": "What is 11 + 12?", "options": ["23", "24", "22", "25"], "correctIndex": 0, "isTrap": false },
-  { "id": 10, "prompt": "What is 12 + 13?", "options": ["25", "26", "24", "27"], "correctIndex": 0, "isTrap": true },
-  { "id": 11, "prompt": "What is 13 + 14?", "options": ["27", "28", "26", "29"], "correctIndex": 0, "isTrap": false },
-  { "id": 12, "prompt": "What is 14 + 15?", "options": ["29", "30", "28", "31"], "correctIndex": 0, "isTrap": true },
-  { "id": 13, "prompt": "What is 15 + 16?", "options": ["31", "32", "30", "33"], "correctIndex": 0, "isTrap": false },
-  { "id": 14, "prompt": "What is 16 + 17?", "options": ["33", "34", "32", "35"], "correctIndex": 0, "isTrap": false },
-  { "id": 15, "prompt": "What is 17 + 18?", "options": ["35", "36", "34", "37"], "correctIndex": 0, "isTrap": true },
-  { "id": 16, "prompt": "What is 18 + 19?", "options": ["37", "38", "36", "39"], "correctIndex": 0, "isTrap": false },
-  { "id": 17, "prompt": "What is 19 + 20?", "options": ["39", "40", "38", "41"], "correctIndex": 0, "isTrap": false },
-  { "id": 18, "prompt": "What is 20 + 21?", "options": ["41", "42", "40", "43"], "correctIndex": 0, "isTrap": true },
-  { "id": 19, "prompt": "What is 21 + 22?", "options": ["43", "44", "42", "45"], "correctIndex": 0, "isTrap": false },
-  { "id": 20, "prompt": "What is 22 + 23?", "options": ["45", "46", "44", "47"], "correctIndex": 0, "isTrap": false },
-  { "id": 21, "prompt": "What is 23 + 24?", "options": ["47", "48", "46", "49"], "correctIndex": 0, "isTrap": true },
-  { "id": 22, "prompt": "What is 24 + 25?", "options": ["49", "50", "48", "51"], "correctIndex": 0, "isTrap": false },
-  { "id": 23, "prompt": "What is 25 + 26?", "options": ["51", "52", "50", "53"], "correctIndex": 0, "isTrap": false },
-  { "id": 24, "prompt": "What is 26 + 27?", "options": ["53", "54", "52", "55"], "correctIndex": 0, "isTrap": true },
-  { "id": 25, "prompt": "What is 27 + 28?", "options": ["55", "56", "54", "57"], "correctIndex": 0, "isTrap": false },
-  { "id": 26, "prompt": "What is 28 + 29?", "options": ["57", "58", "56", "59"], "correctIndex": 0, "isTrap": false },
-  { "id": 27, "prompt": "What is 29 + 30?", "options": ["59", "60", "58", "61"], "correctIndex": 0, "isTrap": false },
-  { "id": 28, "prompt": "What is 30 + 31?", "options": ["61", "62", "60", "63"], "correctIndex": 0, "isTrap": true },
-  { "id": 29, "prompt": "What is 31 + 32?", "options": ["63", "64", "62", "65"], "correctIndex": 0, "isTrap": false },
-  { "id": 30, "prompt": "What is 32 + 33?", "options": ["65", "66", "64", "67"], "correctIndex": 0, "isTrap": false },
-  { "id": 31, "prompt": "What is 33 + 34?", "options": ["67", "68", "66", "69"], "correctIndex": 0, "isTrap": false },
-  { "id": 32, "prompt": "What is 34 + 35?", "options": ["69", "70", "68", "71"], "correctIndex": 0, "isTrap": true },
-  { "id": 33, "prompt": "What is 35 + 36?", "options": ["71", "72", "70", "73"], "correctIndex": 0, "isTrap": false },
-  { "id": 34, "prompt": "What is 36 + 37?", "options": ["73", "74", "72", "75"], "correctIndex": 0, "isTrap": false },
-  { "id": 35, "prompt": "What is 37 + 38?", "options": ["75", "76", "74", "77"], "correctIndex": 0, "isTrap": false },
-  { "id": 36, "prompt": "What is 38 + 39?", "options": ["77", "78", "76", "79"], "correctIndex": 0, "isTrap": true },
-  { "id": 37, "prompt": "What is 39 + 40?", "options": ["79", "80", "78", "81"], "correctIndex": 0, "isTrap": false },
-  { "id": 38, "prompt": "What is 40 + 41?", "options": ["81", "82", "80", "83"], "correctIndex": 0, "isTrap": false },
-  { "id": 39, "prompt": "What is 41 + 42?", "options": ["83", "84", "82", "85"], "correctIndex": 0, "isTrap": false },
-  { "id": 40, "prompt": "What is 42 + 43?", "options": ["85", "86", "84", "87"], "correctIndex": 0, "isTrap": true },
-  { "id": 41, "prompt": "What is 43 + 44?", "options": ["87", "88", "86", "89"], "correctIndex": 0, "isTrap": false },
-  { "id": 42, "prompt": "What is 44 + 45?", "options": ["89", "90", "88", "91"], "correctIndex": 0, "isTrap": false },
-  { "id": 43, "prompt": "What is 45 + 46?", "options": ["91", "92", "90", "93"], "correctIndex": 0, "isTrap": false },
-  { "id": 44, "prompt": "What is 46 + 47?", "options": ["93", "94", "92", "95"], "correctIndex": 0, "isTrap": false },
-  { "id": 45, "prompt": "What is 47 + 48?", "options": ["95", "96", "94", "97"], "correctIndex": 0, "isTrap": true },
-  { "id": 46, "prompt": "What is 48 + 49?", "options": ["97", "98", "96", "99"], "correctIndex": 0, "isTrap": false },
-  { "id": 47, "prompt": "What is 49 + 50?", "options": ["99", "100", "98", "101"], "correctIndex": 0, "isTrap": false },
+  {
+    "id": 0,
+    "question": "What does HTML stand for?",
+    "options": ["Hyper Transfer Markup Language", "Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language"],
+    "answer": "Hyper Text Markup Language",
+    "isTrap": false,
+    "explanation": "HTML is the standard markup language for documents designed to be displayed in a web browser."
+  },
+  {
+    "id": 1,
+    "question": "What does CPU stand for?",
+    "options": ["Central Processing Unit", "Computer Personal Unit", "Central Power Unit", "Core Processing Unit"],
+    "answer": "Central Processing Unit",
+    "isTrap": false,
+    "explanation": "The CPU is the electronic circuitry that executes instructions comprising a computer program."
+  },
+  {
+    "id": 2,
+    "question": "Which company developed the iOS mobile operating system?",
+    "options": ["Google", "Microsoft", "Samsung", "Apple"],
+    "answer": "Apple",
+    "isTrap": false,
+    "explanation": "iOS is Apple's mobile OS that runs on iPhone and iPod touch hardware."
+  },
+  {
+    "id": 3,
+    "question": "What is the main function of a web browser?",
+    "options": ["To send emails", "To write code", "To access and display websites", "To manage files"],
+    "answer": "To access and display websites",
+    "isTrap": true,
+    "explanation": "A web browser's primary purpose is to retrieve and present information from the World Wide Web."
+  },
+  {
+    "id": 4,
+    "question": "What does 'Wi-Fi' stand for?",
+    "options": ["Wireless Fidelity", "Wired Fidelity", "Wireless Firewall", "It is not an abbreviation"],
+    "answer": "Wireless Fidelity",
+    "isTrap": false,
+    "explanation": "Wi-Fi is a family of wireless network protocols used for local area networking of devices and Internet access."
+  },
+  {
+    "id": 5,
+    "question": "What does CSS primarily control in a web page?",
+    "options": ["Server-side logic", "Database connections", "Visual presentation and layout", "User authentication"],
+    "answer": "Visual presentation and layout",
+    "isTrap": false,
+    "explanation": "CSS (Cascading Style Sheets) is used to style the look and formatting of a document written in HTML."
+  },
+  {
+    "id": 6,
+    "question": "What is the version control system created by Linus Torvalds?",
+    "options": ["SVN", "Mercurial", "Git", "CVS"],
+    "answer": "Git",
+    "isTrap": false,
+    "explanation": "Git was created by Linus Torvalds in 2005 for development of the Linux kernel."
+  },
+  {
+    "id": 7,
+    "question": "In programming, what is an API?",
+    "options": ["Advanced Programming Interface", "Application Programming Interface", "Automated Program Interaction", "Applied Process Integration"],
+    "answer": "Application Programming Interface",
+    "isTrap": false,
+    "explanation": "An API is a set of rules and protocols that allows different software applications to communicate with each other."
+  },
+  {
+    "id": 8,
+    "question": "What does 'URL' stand for?",
+    "options": ["Universal Resource Locator", "Uniform Resource Locator", "Universal Reference Link", "Uniform Resource Link"],
+    "answer": "Uniform Resource Locator",
+    "isTrap": true,
+    "explanation": "A URL is a reference to a web resource that specifies its location on a computer network."
+  },
+  {
+    "id": 9,
+    "question": "Which of these is NOT a programming language?",
+    "options": ["Python", "Java", "HTML", "C++"],
+    "answer": "HTML",
+    "isTrap": false,
+    "explanation": "HTML is a markup language used for structuring content, not a programming language which contains logic."
+  },
+  {
+    "id": 10,
+    "question": "Which company created the Android operating system?",
+    "options": ["Apple", "Nokia", "Google", "Microsoft"],
+    "answer": "Google",
+    "isTrap": false,
+    "explanation": "Google acquired Android Inc. in 2005 and has been developing the operating system ever since."
+  },
+  {
+    "id": 11,
+    "question": "What does 'SaaS' stand for?",
+    "options": ["Software as a Security", "System as a Service", "Software as a Service", "Security as a System"],
+    "answer": "Software as a Service",
+    "isTrap": false,
+    "explanation": "SaaS is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet."
+  },
+  {
+    "id": 12,
+    "question": "What is the primary purpose of a firewall?",
+    "options": ["To increase internet speed", "To monitor and filter network traffic", "To store website data", "To block all internet access"],
+    "answer": "To monitor and filter network traffic",
+    "isTrap": true,
+    "explanation": "A firewall acts as a barrier between a trusted network and an untrusted network, controlling incoming and outgoing traffic based on security rules."
+  },
+  {
+    "id": 13,
+    "question": "Which file format is commonly used for images with transparency?",
+    "options": [".JPG", ".GIF", ".PNG", ".BMP"],
+    "answer": ".PNG",
+    "isTrap": false,
+    "explanation": "PNG (Portable Network Graphics) supports lossless data compression and can display images with a transparent background."
+  },
+  {
+    "id": 14,
+    "question": "What is the world's most popular programming language, according to recent developer surveys?",
+    "options": ["Java", "Python", "C#", "JavaScript"],
+    "answer": "JavaScript",
+    "isTrap": false,
+    "explanation": "For many years running, JavaScript has been the most commonly used programming language, primarily for web development."
+  },
+  {
+    "id": 15,
+    "question": "What is the name of the default package manager for Node.js?",
+    "options": ["Yarn", "npm", "pip", "Maven"],
+    "answer": "npm",
+    "isTrap": false,
+    "explanation": "npm (Node Package Manager) is the default package manager for the JavaScript runtime environment Node.js."
+  },
+  {
+    "id": 16,
+    "question": "What does 'IP' stand for in 'IP Address'?",
+    "options": ["Internal Protocol", "Internet Protocol", "Information Provider", "Internal Position"],
+    "answer": "Internet Protocol",
+    "isTrap": false,
+    "explanation": "An Internet Protocol address is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication."
+  },
+  {
+    "id": 17,
+    "question": "What is 'phishing'?",
+    "options": ["A method for catching fish", "A type of computer hardware", "A fraudulent attempt to obtain sensitive information", "A programming technique"],
+    "answer": "A fraudulent attempt to obtain sensitive information",
+    "isTrap": true,
+    "explanation": "Phishing is a cybercrime in which a target is contacted by email, telephone or text message by someone posing as a legitimate institution to lure them into providing sensitive data."
+  },
+  {
+    "id": 18,
+    "question": "Which of these is a popular front-end JavaScript library for building user interfaces?",
+    "options": ["Node.js", "Express", "React", "Django"],
+    "answer": "React",
+    "isTrap": false,
+    "explanation": "React was created by Facebook and is widely used for building UIs, especially for single-page applications."
+  },
+  {
+    "id": 19,
+    "question": "What does a '.zip' file represent?",
+    "options": ["A system file", "A video file", "A compressed archive of files", "An executable program"],
+    "answer": "A compressed archive of files",
+    "isTrap": false,
+    "explanation": "A ZIP file is an archive file format that supports lossless data compression. It may contain one or more files or directories."
+  },
+  {
+    "id": 20,
+    "question": "What is the standard port number for HTTPS connections?",
+    "options": ["80", "21", "443", "8080"],
+    "answer": "443",
+    "isTrap": false,
+    "explanation": "Port 80 is for standard HTTP, while Port 443 is used for secure HTTPS connections."
+  },
+  {
+    "id": 21,
+    "question": "What is a 'Primary Key' in a relational database?",
+    "options": ["The most important data in a table", "A column that uniquely identifies each record in a table", "The first column of any table", "A password for the database"],
+    "answer": "A column that uniquely identifies each record in a table",
+    "isTrap": false,
+    "explanation": "A primary key must contain unique values and cannot contain NULL values. It is a unique identifier for each row."
+  },
+  {
+    "id": 22,
+    "question": "What does OOP stand for?",
+    "options": ["Object-Oriented Programming", "Online Order Processing", "Object-Open Protocol", "Official Open-source Project"],
+    "answer": "Object-Oriented Programming",
+    "isTrap": false,
+    "explanation": "OOP is a programming paradigm based on the concept of 'objects', which can contain data and code."
+  },
+  {
+    "id": 23,
+    "question": "Which HTTP status code indicates that a request has been successful?",
+    "options": ["404", "500", "301", "200"],
+    "answer": "200",
+    "isTrap": true,
+    "explanation": "A 200 OK status code indicates that the request has succeeded. 404 means 'Not Found' and 500 means 'Internal Server Error'."
+  },
+  {
+    "id": 24,
+    "question": "What is the main difference between a compiler and an interpreter?",
+    "options": ["Compilers are for web, interpreters for desktop", "Compilers are faster", "A compiler translates the entire program at once; an interpreter translates it line by line", "There is no difference"],
+    "answer": "A compiler translates the entire program at once; an interpreter translates it line by line",
+    "isTrap": false,
+    "explanation": "A compiler creates an executable file, while an interpreter executes the source code directly."
+  },
+  {
+    "id": 25,
+    "question": "What is the main purpose of Docker?",
+    "options": ["To manage databases", "To write code in a team", "To create, deploy, and run applications in containers", "To design user interfaces"],
+    "answer": "To create, deploy, and run applications in containers",
+    "isTrap": false,
+    "explanation": "Containerization, using tools like Docker, packages an application with its dependencies into a standardized unit for software development."
+  },
+  {
+    "id": 26,
+    "question": "Which of the following is an example of a NoSQL database?",
+    "options": ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+    "answer": "MongoDB",
+    "isTrap": false,
+    "explanation": "MongoDB is a document-oriented NoSQL database, while MySQL, PostgreSQL, and SQLite are relational (SQL) databases."
+  },
+  {
+    "id": 27,
+    "question": "What does the acronym 'JSON' stand for?",
+    "options": ["Java Source Object Notation", "JavaScript Object Notation", "JavaScript Online Notation", "Java System Object Naming"],
+    "answer": "JavaScript Object Notation",
+    "isTrap": false,
+    "explanation": "JSON is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate."
+  },
+  {
+    "id": 28,
+    "question": "What is Moore's Law?",
+    "options": ["A law about internet speed", "The observation that the number of transistors in a dense integrated circuit doubles about every two years", "A rule for naming variables", "A type of encryption algorithm"],
+    "answer": "The observation that the number of transistors in a dense integrated circuit doubles about every two years",
+    "isTrap": true,
+    "explanation": "Moore's Law is an observation and projection of a historical trend, not a physical law."
+  },
+  {
+    "id": 29,
+    "question": "What is a DDoS attack?",
+    "options": ["A type of computer virus", "A way to steal data", "An attempt to make an online service unavailable by overwhelming it with traffic", "A method to secure a network"],
+    "answer": "An attempt to make an online service unavailable by overwhelming it with traffic",
+    "isTrap": false,
+    "explanation": "A Distributed Denial-of-Service (DDoS) attack uses multiple compromised computer systems as sources of attack traffic."
+  },
+  {
+    "id": 30,
+    "question": "Which data structure operates on a Last-In, First-Out (LIFO) basis?",
+    "options": ["Queue", "Linked List", "Stack", "Tree"],
+    "answer": "Stack",
+    "isTrap": false,
+    "explanation": "A stack is an abstract data type that serves as a collection of elements, with two principal operations: push, which adds an element, and pop, which removes the most recently added element."
+  },
+  {
+    "id": 31,
+    "question": "In the CAP theorem for distributed systems, what does 'C' stand for?",
+    "options": ["Concurrency", "Consistency", "Capacity", "Connection"],
+    "answer": "Consistency",
+    "isTrap": false,
+    "explanation": "The CAP theorem states that a distributed data store can only provide two of the following three guarantees: Consistency, Availability, and Partition tolerance."
+  },
+  {
+    "id": 32,
+    "question": "AWS Lambda is an example of which cloud computing model?",
+    "options": ["Infrastructure as a Service (IaaS)", "Platform as a Service (PaaS)", "Software as a Service (SaaS)", "Function as a Service (FaaS)"],
+    "answer": "Function as a Service (FaaS)",
+    "isTrap": false,
+    "explanation": "FaaS, or serverless computing, allows developers to run code in response to events without managing the underlying server infrastructure."
+  },
+  {
+    "id": 33,
+    "question": "What is the Big O notation for the time complexity of a binary search algorithm?",
+    "options": ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
+    "answer": "O(log n)",
+    "isTrap": true,
+    "explanation": "Binary search is a very efficient algorithm with logarithmic time complexity because it divides the search interval in half with each operation."
+  },
+  {
+    "id": 34,
+    "question": "In Git, what is a 'pull request'?",
+    "options": ["A request to download files from a server", "A notification about a security vulnerability", "A mechanism for a developer to propose changes to a codebase", "A command to delete a remote branch"],
+    "answer": "A mechanism for a developer to propose changes to a codebase",
+    "isTrap": false,
+    "explanation": "A pull request is a way to contribute to a project or repository, allowing others to review and discuss the proposed changes before they are merged."
+  },
+  {
+    "id": 35,
+    "question": "What is the primary function of a DNS server?",
+    "options": ["To store large files", "To secure a network connection", "To translate human-readable domain names to machine-readable IP addresses", "To manage email delivery"],
+    "answer": "To translate human-readable domain names to machine-readable IP addresses",
+    "isTrap": false,
+    "explanation": "The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like google.com. Web browsers interact through IP addresses."
+  },
+  {
+    "id": 36,
+    "question": "What is a 'Man-in-the-Middle' (MitM) attack?",
+    "options": ["A type of physical server theft", "An attack where the attacker secretly relays and possibly alters the communication between two parties", "A social engineering technique", "A denial-of-service attack"],
+    "answer": "An attack where the attacker secretly relays and possibly alters the communication between two parties",
+    "isTrap": true,
+    "explanation": "In a MitM attack, the attacker intercepts a conversation between two systems, for example, between a user and their bank."
+  },
+  {
+    "id": 37,
+    "question": "What is the primary purpose of an index in a database?",
+    "options": ["To encrypt data", "To speed up the performance of queries", "To create a backup of the table", "To define the data types of columns"],
+    "answer": "To speed up the performance of queries",
+    "isTrap": false,
+    "explanation": "An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space."
+  },
+  {
+    "id": 38,
+    "question": "In web development, what is 'CORS'?",
+    "options": ["A styling framework", "A type of server", "A security mechanism that controls how web pages in one domain can request resources from another domain", "A data compression algorithm"],
+    "answer": "A security mechanism that controls how web pages in one domain can request resources from another domain",
+    "isTrap": false,
+    "explanation": "Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell browsers to give a web application running at one origin, access to selected resources from a different origin."
+  },
+  {
+    "id": 39,
+    "question": "What is a Virtual Private Network (VPN) primarily used for?",
+    "options": ["To increase internet download speed", "To create a secure and encrypted connection over a less secure network", "To host websites", "To block advertisements"],
+    "answer": "To create a secure and encrypted connection over a less secure network",
+    "isTrap": false,
+    "explanation": "A VPN extends a private network across a public network and enables users to send and receive data as if their computing devices were directly connected to the private network."
+  },
+  {
+    "id": 40,
+    "question": "What is the primary difference between TCP and UDP?",
+    "options": ["TCP is faster but less reliable", "UDP establishes a connection before sending data", "TCP is connection-oriented, UDP is connectionless", "UDP is used for web pages, TCP for streaming"],
+    "answer": "TCP is connection-oriented, UDP is connectionless",
+    "isTrap": false,
+    "explanation": "TCP establishes a reliable connection and guarantees packet order, whereas UDP is a faster, connectionless protocol that does not guarantee delivery."
+  },
+  {
+    "id": 41,
+    "question": "In the context of REST APIs, which HTTP method is idempotent?",
+    "options": ["POST", "PATCH", "PUT", "GET and POST"],
+    "answer": "PUT",
+    "isTrap": true,
+    "explanation": "Idempotent methods can be called multiple times with the same result. PUT is idempotent because it replaces the entire resource, while POST creates a new resource each time."
+  },
+  {
+    "id": 42,
+    "question": "What is container orchestration?",
+    "options": ["The process of writing code for containers", "Automating the deployment, scaling, and management of containerized applications", "A tool for building container images", "A type of cybersecurity threat"],
+    "answer": "Automating the deployment, scaling, and management of containerized applications",
+    "isTrap": false,
+    "explanation": "Tools like Kubernetes and Docker Swarm are used for container orchestration."
+  },
+  {
+    "id": 43,
+    "question": "What does the 'S' in SOLID principles stand for?",
+    "options": ["Simple Responsibility Principle", "Single Responsibility Principle", "Software Responsibility Principle", "Systematic Responsibility Principle"],
+    "answer": "Single Responsibility Principle",
+    "isTrap": false,
+    "explanation": "The Single Responsibility Principle states that a class should have only one reason to change."
+  },
+  {
+    "id": 44,
+    "question": "What is a 'headless CMS'?",
+    "options": ["A CMS that has no graphical user interface", "A content management system that only stores content and delivers it via API", "A CMS that runs without a server", "A CMS that has been compromised by a hacker"],
+    "answer": "A content management system that only stores content and delivers it via API",
+    "isTrap": false,
+    "explanation": "A headless CMS separates the content repository ('body') from the presentation layer ('head'), allowing content to be served to any frontend."
+  },
+  {
+    "id": 45,
+    "question": "In machine learning, what is 'overfitting'?",
+    "options": ["When a model is too simple to capture the data's complexity", "When a model performs well on training data but poorly on new, unseen data", "When a model uses too much computational power", "When a model is trained on too little data"],
+    "answer": "When a model performs well on training data but poorly on new, unseen data",
+    "isTrap": false,
+    "explanation": "Overfitting occurs when a model learns the training data, including noise and random fluctuations, too well, hindering its ability to generalize to new data."
+  },
+  {
+    "id": 46,
+    "question": "What is a 'zero-day' vulnerability?",
+    "options": ["A vulnerability that takes zero days to fix", "A software vulnerability that is discovered by attackers before the vendor is aware", "A vulnerability that has zero impact on a system", "A type of open-source software license"],
+    "answer": "A software vulnerability that is discovered by attackers before the vendor is aware",
+    "isTrap": true,
+    "explanation": "It's called 'zero-day' because the vendor has had zero days to create a patch to fix the problem."
+  },
+  {
+    "id": 47,
+    "question": "What is the purpose of the Event Loop in JavaScript?",
+    "options": ["To handle all user interface events", "To execute code, collect and process events, and execute queued sub-tasks", "To loop through arrays and objects", "To manage memory allocation for variables"],
+    "answer": "To execute code, collect and process events, and execute queued sub-tasks",
+    "isTrap": false,
+    "explanation": "The event loop is what allows JavaScript to use callbacks and promises, enabling non-blocking (asynchronous) operations despite being single-threaded."
+  },
   {
     "id": 48,
-    "prompt": "What is 50 + 51?",
-    "options": ["101", "102", "100", "103"],
-    "correctIndex": 0,
-    "isTrap": false
+    "question": "What is Quantum Supremacy?",
+    "options": ["A quantum computer that can replace all classical computers", "A type of quantum-resistant encryption", "A hypothetical future state where AI becomes sentient", "The point where a quantum computer can perform a task that no classical computer could feasibly perform"],
+    "answer": "The point where a quantum computer can perform a task that no classical computer could feasibly perform",
+    "isTrap": false,
+    "explanation": "It demonstrates a significant speedup for a specific, often contrived, problem, proving the potential of quantum computing."
   },
   {
     "id": 49,
-    "prompt": "What is 51 + 52?",
-    "options": ["103", "104", "102", "105"],
-    "correctIndex": 0,
-    "isTrap": true
-  },
-  {
-    "id": 50,
-    "prompt": "What is 52 + 53?",
-    "options": ["105", "106", "104", "107"],
-    "correctIndex": 0,
-    "isTrap": false
+    "question": "What is Infrastructure as Code (IaC)?",
+    "options": ["Writing application code that runs on servers", "A programming language for hardware", "Managing and provisioning infrastructure through machine-readable definition files", "A type of low-level firmware"],
+    "answer": "Managing and provisioning infrastructure through machine-readable definition files",
+    "isTrap": false,
+    "explanation": "IaC tools like Terraform and CloudFormation allow you to define your cloud infrastructure in code, making it versionable and reproducible."
   }
 ]
