@@ -60,7 +60,7 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
               aria-label="Question options"
               className="mt-4 space-y-3"
             >
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <Radio
                   key={option}
                   value={option}
@@ -70,7 +70,13 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
                   {({ checked }) => (
                     <>
                       <span className="flex w-full items-center justify-between">
-                        <span className="text-base font-medium">{option}</span>
+                        <span className="flex items-center text-base font-medium">
+                          {/* Added letters A, B, C, D for options */}
+                          <span className="mr-3 flex h-6 w-6 items-center justify-center rounded-sm border border-primary/50 text-xs font-semibold text-primary/80">
+                            {String.fromCharCode(65 + index)}
+                          </span>
+                          {option}
+                        </span>
                         {checked && selectedOption ? (
                           <div className="shrink-0 text-white">
                             {selectedOption === correctAnswer ? (
