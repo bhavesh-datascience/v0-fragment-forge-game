@@ -5,133 +5,160 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #1f2937;
-  --card-foreground: #ffffff;
-  --popover: #1f2937;
-  --popover-foreground: #ffffff;
-  --primary: #00bcd4;
-  --primary-foreground: #ffffff;
-  --secondary: #c6ff00;
-  --secondary-foreground: #000000;
-  --muted: #9e9e9e;
-  --muted-foreground: #ffffff;
-  --accent: #c6ff00;
-  --accent-foreground: #000000;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: #0f1a20;
-  --input: #1f2937;
-  --ring: #00bcd4;
-  --chart-1: #00bcd4;
-  --chart-2: #c6ff00;
-  --chart-3: #9e9e9e;
-  --chart-4: #ffffff;
-  --chart-5: #000000;
-  --radius: 0.5rem;
-  --sidebar: #1f2937;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #00bcd4;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #c6ff00;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-border: #0f1a20;
-  --sidebar-ring: #00bcd4;
-  --neon-blue: #00e5ff;
-  --neon-green: #39ff14;
-  --neon-pink: #ff4dff;
-  --neon-red: #ff2b2b;
-  --neon-orange: #ffa600;
+--background: #000000;
+--foreground: #ffffff;
+
+--card: #1f2937;
+--card-foreground: #ffffff;
+
+--popover: #1f2937;
+--popover-foreground: #ffffff;
+
+--primary: #00bcd4;
+--primary-foreground: #ffffff;
+
+--secondary: #c6ff00;
+--secondary-foreground: #000000;
+
+--muted: #9e9e9e;
+--muted-foreground: #ffffff;
+
+--accent: #c6ff00;
+--accent-foreground: #000000;
+
+--destructive: #dc2626;
+--destructive-foreground: #ffffff;
+
+--border: #0f1a20;
+--input: #1f2937;
+--ring: #00bcd4;
+
+--chart-1: #00bcd4;
+--chart-2: #c6ff00;
+--chart-3: #9e9e9e;
+--chart-4: #ffffff;
+--chart-5: #000000;
+
+--radius: 0.5rem;
+
+--sidebar: #1f2937;
+--sidebar-foreground: #ffffff;
+--sidebar-primary: #00bcd4;
+--sidebar-primary-foreground: #ffffff;
+--sidebar-accent: #c6ff00;
+--sidebar-accent-foreground: #000000;
+--sidebar-border: #0f1a20;
+--sidebar-ring: #00bcd4;
+
+  /* neon palette for doors and question panels */
+--neon-blue: #00e5ff;
+--neon-green: #39ff14;
+--neon-pink: #ff4dff;
+--neon-red: #ff2b2b;
+--neon-orange: #ffa600;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #1f2937;
-  --card-foreground: #ffffff;
-  --popover: #1f2937;
-  --popover-foreground: #ffffff;
-  --primary: #00bcd4;
-  --primary-foreground: #ffffff;
-  --secondary: #c6ff00;
-  --secondary-foreground: #000000;
-  --muted: #9e9e9e;
-  --muted-foreground: #ffffff;
-  --accent: #c6ff00;
-  --accent-foreground: #000000;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: #0f1a20;
-  --input: #1f2937;
-  --ring: #00bcd4;
-  --chart-1: #00bcd4;
-  --chart-2: #c6ff00;
-  --chart-3: #9e9e9e;
-  --chart-4: #ffffff;
-  --chart-5: #000000;
-  --sidebar: #1f2937;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #00bcd4;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #c6ff00;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-border: #0f1a20;
-  --sidebar-ring: #00bcd4;
+  /* keep dark the same as root for this theme */
+--background: #000000;
+--foreground: #ffffff;
+
+--card: #1f2937;
+--card-foreground: #ffffff;
+
+--popover: #1f2937;
+--popover-foreground: #ffffff;
+
+--primary: #00bcd4;
+--primary-foreground: #ffffff;
+
+--secondary: #c6ff00;
+--secondary-foreground: #000000;
+
+--muted: #9e9e9e;
+--muted-foreground: #ffffff;
+
+--accent: #c6ff00;
+--accent-foreground: #000000;
+
+--destructive: #dc2626;
+--destructive-foreground: #ffffff;
+
+--border: #0f1a20;
+--input: #1f2937;
+--ring: #00bcd4;
+
+--chart-1: #00bcd4;
+--chart-2: #c6ff00;
+--chart-3: #9e9e9e;
+--chart-4: #ffffff;
+--chart-5: #000000;
+
+--sidebar: #1f2937;
+--sidebar-foreground: #ffffff;
+--sidebar-primary: #00bcd4;
+--sidebar-primary-foreground: #ffffff;
+--sidebar-accent: #c6ff00;
+--sidebar-accent-foreground: #000000;
+--sidebar-border: #0f1a20;
+--sidebar-ring: #00bcd4;
 }
 
 @theme inline {
-  --font-sans: var(--font-source-sans);
-  --font-serif: var(--font-playfair);
-  --font-mono: var(--font-geist-mono);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* map our Next.js font variables */
+--font-sans: var(--font-source-sans);
+--font-serif: var(--font-playfair);
+--font-mono: var(--font-geist-mono);
+
+--color-background: var(--background);
+--color-foreground: var(--foreground);
+--color-card: var(--card);
+--color-card-foreground: var(--card-foreground);
+--color-popover: var(--popover);
+--color-popover-foreground: var(--popover-foreground);
+--color-primary: var(--primary);
+--color-primary-foreground: var(--primary-foreground);
+--color-secondary: var(--secondary);
+--color-secondary-foreground: var(--secondary-foreground);
+--color-muted: var(--muted);
+--color-muted-foreground: var(--muted-foreground);
+--color-accent: var(--accent);
+--color-accent-foreground: var(--accent-foreground);
+--color-destructive: var(--destructive);
+--color-destructive-foreground: var(--destructive-foreground);
+--color-border: var(--border);
+--color-input: var(--input);
+--color-ring: var(--ring);
+--color-chart-1: var(--chart-1);
+--color-chart-2: var(--chart-2);
+--color-chart-3: var(--chart-3);
+--color-chart-4: var(--chart-4);
+--color-chart-5: var(--chart-5);
+--radius-sm: calc(var(--radius) - 4px);
+--radius-md: calc(var(--radius) - 2px);
+--radius-lg: var(--radius);
+--radius-xl: calc(var(--radius) + 4px);
+--color-sidebar: var(--sidebar);
+--color-sidebar-foreground: var(--sidebar-foreground);
+--color-sidebar-primary: var(--sidebar-primary);
+--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+--color-sidebar-accent: var(--sidebar-accent);
+--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+--color-sidebar-border: var(--sidebar-border);
+--color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+* {
+@apply border-border outline-ring/50;
+}
+body {
+@apply bg-background text-foreground;
+}
 }
 
 @layer utilities {
+  /* Cyan tech light rays bursting out of the doorway to the right */
   /* --- STYLES FOR THE ORIGINAL DASHBOARD --- */
   .hud-divider {
     height: 1px;
@@ -155,362 +182,406 @@
   }
 
   /* --- STYLES FOR THE GAME --- */
-  .ff-rays {
-    position: absolute;
-    inset: -8px -160px -8px 45%;
-    pointer-events: none;
-    z-index: 0;
-    background: radial-gradient(
-        ellipse at left center,
-        color-mix(in oklab, var(--color-primary) 95%, white 5%) 0%,
-        color-mix(in oklab, var(--color-primary) 80%, black 20%) 35%,
-        transparent 70%
-      ),
-      conic-gradient(
-        from 0.25turn at left center,
-        color-mix(in oklab, var(--color-primary) 40%, white 10%),
-        color-mix(in oklab, var(--color-primary) 55%, black 10%) 20%,
-        transparent 65%
-      );
-    filter: blur(2px) saturate(115%);
-    -webkit-mask-image: radial-gradient(ellipse at left center, black 22%, transparent 68%);
-    mask-image: radial-gradient(ellipse at left center, black 22%, transparent 68%);
-    opacity: 0;
-  }
+.ff-rays {
+position: absolute;
+inset: -8px -160px -8px 45%;
+pointer-events: none;
+z-index: 0;
+background: radial-gradient(
+ellipse at left center,
+color-mix(in oklab, var(--color-primary) 95%, white 5%) 0%,
+color-mix(in oklab, var(--color-primary) 80%, black 20%) 35%,
+transparent 70%
+),
+conic-gradient(
+from 0.25turn at left center,
+color-mix(in oklab, var(--color-primary) 40%, white 10%),
+color-mix(in oklab, var(--color-primary) 55%, black 10%) 20%,
+transparent 65%
+);
+filter: blur(2px) saturate(115%);
+-webkit-mask-image: radial-gradient(ellipse at left center, black 22%, transparent 68%);
+mask-image: radial-gradient(ellipse at left center, black 22%, transparent 68%);
+opacity: 0;
+}
 
-  .ff-floor-glow {
-    position: absolute;
-    left: 6%;
-    right: 35%;
-    bottom: -4px;
-    height: 10px;
-    pointer-events: none;
-    z-index: 0;
-    background: radial-gradient(
-      ellipse at left bottom,
-      color-mix(in oklab, var(--color-primary) 65%, white 10%),
-      transparent 60%
-    );
-    filter: blur(6px);
-    opacity: 0.25;
-  }
+  /* Soft oval glow on the floor near the threshold */
+.ff-floor-glow {
+position: absolute;
+left: 6%;
+right: 35%;
+bottom: -4px;
+height: 10px;
+pointer-events: none;
+z-index: 0;
+background: radial-gradient(
+ellipse at left bottom,
+color-mix(in oklab, var(--color-primary) 65%, white 10%),
+transparent 60%
+);
+filter: blur(6px);
+opacity: 0.25;
+}
 
-  .ff-particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  /* Magic particle utilities for the door burst */
+.ff-particles {
+position: absolute;
+inset: 0;
+pointer-events: none;
+    z-index: 1; /* above rays, below door leaf */
     z-index: 1;
-    overflow: visible;
-  }
-  .ff-particles .ff-particle {
-    position: absolute;
-    left: 14%;
-    top: 52%;
-    width: var(--size, 6px);
-    height: var(--size, 6px);
-    border-radius: 9999px;
-    background: radial-gradient(
-      circle at center,
-      color-mix(in oklab, var(--part-color, var(--color-primary)) 85%, white 15%) 0%,
-      color-mix(in oklab, var(--part-color, var(--color-primary)) 70%, black 30%) 70%,
-      transparent 100%
-    );
-    box-shadow: 0 0 6px color-mix(in oklab, var(--part-color, var(--color-primary)) 65%, white 35%), 0 0 18px
-      color-mix(in oklab, var(--part-color, var(--color-primary)) 35%, black 65%);
-    transform: translate3d(0, 0, 0) scale(0.6);
-    opacity: 0;
-    animation: ff-particle-burst var(--dur, 900ms) ease-out var(--delay, 0ms) forwards;
-    will-change: transform, opacity, filter;
-    filter: saturate(120%);
-  }
+overflow: visible;
+}
+.ff-particles .ff-particle {
+position: absolute;
+left: 14%;
+top: 52%;
+width: var(--size, 6px);
+height: var(--size, 6px);
+border-radius: 9999px;
+background: radial-gradient(
+circle at center,
+color-mix(in oklab, var(--part-color, var(--color-primary)) 85%, white 15%) 0%,
+color-mix(in oklab, var(--part-color, var(--color-primary)) 70%, black 30%) 70%,
+transparent 100%
+);
+box-shadow: 0 0 6px color-mix(in oklab, var(--part-color, var(--color-primary)) 65%, white 35%), 0 0 18px
+color-mix(in oklab, var(--part-color, var(--color-primary)) 35%, black 65%);
+transform: translate3d(0, 0, 0) scale(0.6);
+opacity: 0;
+animation: ff-particle-burst var(--dur, 900ms) ease-out var(--delay, 0ms) forwards;
+will-change: transform, opacity, filter;
+filter: saturate(120%);
+}
 
-  .ff-neon-panel {
-    position: relative;
-    border-radius: var(--radius);
-    border: 1px solid color-mix(in oklab, var(--color-primary) 60%, white 40%);
-    background: color-mix(in oklab, black 65%, var(--color-card) 35%);
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-primary) 35%, black 65%) inset, 0 0 24px
-      color-mix(in oklab, var(--color-primary) 35%, black 65%), 0 0 60px
-      color-mix(in oklab, var(--color-primary) 18%, black 82%);
-  }
-  .ff-halo {
-    position: absolute;
-    inset: -30px;
-    border-radius: inherit;
-    background: radial-gradient(
-        circle at 20% 10%,
-        color-mix(in oklab, var(--color-primary) 40%, white 10%),
-        transparent 60%
-      ), radial-gradient(circle at 80% 90%, color-mix(in oklab, var(--color-secondary) 18%, white 10%), transparent 55%);
-    filter: blur(18px);
-    opacity: 0.5;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .ff-question-rays {
-    position: absolute;
-    inset: -24px;
-    z-index: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    background: conic-gradient(
-        from 0.25turn at 10% 50%,
-        color-mix(in oklab, var(--color-primary) 35%, white 15%),
-        transparent 45%
-      ), radial-gradient(ellipse at 5% 50%, color-mix(in oklab, var(--color-primary) 55%, black 45%), transparent 60%);
+  /* Neon question board styles: panel, rays behind, bubble, options, and light sweep */
+.ff-neon-panel {
+position: relative;
+border-radius: var(--radius);
+border: 1px solid color-mix(in oklab, var(--color-primary) 60%, white 40%);
+background: color-mix(in oklab, black 65%, var(--color-card) 35%);
+box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-primary) 35%, black 65%) inset, 0 0 24px
+color-mix(in oklab, var(--color-primary) 35%, black 65%), 0 0 60px
+color-mix(in oklab, var(--color-primary) 18%, black 82%);
+}
+.ff-halo {
+position: absolute;
+inset: -30px;
+border-radius: inherit;
+background: radial-gradient(
+circle at 20% 10%,
+color-mix(in oklab, var(--color-primary) 40%, white 10%),
+transparent 60%
+), radial-gradient(circle at 80% 90%, color-mix(in oklab, var(--color-secondary) 18%, white 10%), transparent 55%);
+filter: blur(18px);
+opacity: 0.5;
+z-index: 0;
+pointer-events: none;
+}
+.ff-question-rays {
+position: absolute;
+inset: -24px;
+z-index: 0;
+pointer-events: none;
+border-radius: inherit;
+background: conic-gradient(
+from 0.25turn at 10% 50%,
+color-mix(in oklab, var(--color-primary) 35%, white 15%),
+transparent 45%
+), radial-gradient(ellipse at 5% 50%, color-mix(in oklab, var(--color-primary) 55%, black 45%), transparent 60%);
+    opacity: 0.22; /* slightly reduced and static */
     opacity: 0.22;
-    filter: blur(2px) saturate(115%);
-  }
-  .ff-neon-bubble {
-    position: relative;
-    border-radius: var(--radius);
-    padding: 10px 12px;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 55%, white 45%);
-    box-shadow: 0 0 14px color-mix(in oklab, var(--color-primary) 35%, black 65%), inset 0 0 12px
-      color-mix(in oklab, var(--color-primary) 25%, black 75%);
-    background: linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--color-card) 88%, black 12%),
-      color-mix(in oklab, var(--color-card) 65%, black 35%)
-    );
-  }
-  .ff-neon-bubble::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      120deg,
-      transparent 15%,
-      color-mix(in oklab, var(--color-primary) 55%, white 45%) 50%,
-      transparent 85%
-    );
-    mask: linear-gradient(90deg, transparent, black 40% 60%, transparent);
-    opacity: 0.28;
-    pointer-events: none;
-  }
-  .ff-neon-option {
-    position: relative;
-    border-radius: var(--radius);
-    border: 1px solid color-mix(in oklab, var(--color-primary) 55%, white 45%);
-    background: color-mix(in oklab, var(--color-card) 85%, black 15%);
-    box-shadow: 0 0 10px color-mix(in oklab, var(--color-primary) 28%, black 72%), inset 0 0 10px
-      color-mix(in oklab, var(--color-primary) 18%, black 82%);
-    color: color-mix(in oklab, white 92%, var(--color-primary) 8%);
-    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-  }
-  .ff-neon-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 10px 24px rgba(0, 0, 0, 0.35);
-  }
-  .ff-neon-option:active {
-    transform: translateY(0);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 6px 16px rgba(0, 0, 0, 0.35);
-  }
+filter: blur(2px) saturate(115%);
+}
+.ff-neon-bubble {
+position: relative;
+border-radius: var(--radius);
+padding: 10px 12px;
+border: 1px solid color-mix(in oklab, var(--color-primary) 55%, white 45%);
+box-shadow: 0 0 14px color-mix(in oklab, var(--color-primary) 35%, black 65%), inset 0 0 12px
+color-mix(in oklab, var(--color-primary) 25%, black 75%);
+background: linear-gradient(
+180deg,
+color-mix(in oklab, var(--color-card) 88%, black 12%),
+color-mix(in oklab, var(--color-card) 65%, black 35%)
+);
+}
+.ff-neon-bubble::after {
+content: "";
+position: absolute;
+inset: 0;
+border-radius: inherit;
+background: linear-gradient(
+120deg,
+transparent 15%,
+color-mix(in oklab, var(--color-primary) 55%, white 45%) 50%,
+transparent 85%
+);
+    /* was: mask + animation ff-sweep; now static for a still reflection */
+mask: linear-gradient(90deg, transparent, black 40% 60%, transparent);
+opacity: 0.28;
+pointer-events: none;
+}
+.ff-neon-option {
+position: relative;
+border-radius: var(--radius);
+border: 1px solid color-mix(in oklab, var(--color-primary) 55%, white 45%);
+background: color-mix(in oklab, var(--color-card) 85%, black 15%);
+box-shadow: 0 0 10px color-mix(in oklab, var(--color-primary) 28%, black 72%), inset 0 0 10px
+color-mix(in oklab, var(--color-primary) 18%, black 82%);
+color: color-mix(in oklab, white 92%, var(--color-primary) 8%);
+transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.ff-neon-option:hover {
+transform: translateY(-1px);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+.ff-neon-option:active {
+transform: translateY(0);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
 
-  .ff-question-particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .ff-question-particles .ff-particle {
-    left: 10%;
-    top: 50%;
-  }
+  /* Optional tiny sparkles inside the question panel when it mounts */
+.ff-question-particles {
+position: absolute;
+inset: 0;
+pointer-events: none;
+z-index: 1;
+}
+.ff-question-particles .ff-particle {
+left: 10%;
+top: 50%;
+}
 
-  .ff-door-bg {
-    position: absolute;
-    inset: -8px;
-    border-radius: 12px;
-    pointer-events: none;
-    z-index: 0;
-    background: radial-gradient(
-        80% 80% at 50% 30%,
-        color-mix(in oklab, var(--color-primary) 22%, black 78%),
-        transparent 70%
-      ), radial-gradient(60% 60% at 50% 120%, color-mix(in oklab, var(--color-primary) 10%, black 90%), transparent 60%);
-    animation: ff-bg-pulse 2600ms ease-in-out infinite;
-    opacity: 0.6;
-    filter: blur(6px);
-  }
-  .ff-door-bg-open {
-    background: radial-gradient(
-        85% 85% at 35% 45%,
-        color-mix(in oklab, var(--color-primary) 35%, white 5%),
-        transparent 70%
-      ),
-      conic-gradient(from 0.15turn at 35% 50%, color-mix(in oklab, var(--color-primary) 25%, white 5%), transparent 65%);
-    animation: ff-bg-breathe 1600ms ease-in-out infinite;
-    opacity: 0.85;
-    filter: blur(6px) saturate(120%);
-  }
+  /* Animated door card backgrounds (closed vs open) */
+.ff-door-bg {
+position: absolute;
+inset: -8px;
+border-radius: 12px;
+pointer-events: none;
+z-index: 0;
+background: radial-gradient(
+80% 80% at 50% 30%,
+color-mix(in oklab, var(--color-primary) 22%, black 78%),
+transparent 70%
+), radial-gradient(60% 60% at 50% 120%, color-mix(in oklab, var(--color-primary) 10%, black 90%), transparent 60%);
+animation: ff-bg-pulse 2600ms ease-in-out infinite;
+opacity: 0.6;
+filter: blur(6px);
+}
+.ff-door-bg-open {
+background: radial-gradient(
+85% 85% at 35% 45%,
+color-mix(in oklab, var(--color-primary) 35%, white 5%),
+transparent 70%
+),
+conic-gradient(from 0.15turn at 35% 50%, color-mix(in oklab, var(--color-primary) 25%, white 5%), transparent 65%);
+animation: ff-bg-breathe 1600ms ease-in-out infinite;
+opacity: 0.85;
+filter: blur(6px) saturate(120%);
+}
 
-  .ff-room-ambient {
-    background: radial-gradient(1200px 600px at 10% 20%, rgba(0, 188, 212, 0.1), transparent 60%),
-      radial-gradient(900px 450px at 90% 80%, rgba(198, 255, 0, 0.08), transparent 65%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
-    background-size: 200% 200%, 200% 200%, 100% 100%;
-    animation: ff-ambient-pan 12s ease-in-out infinite alternate;
-  }
+  /* Animated ambient background for the room page */
+.ff-room-ambient {
+background: radial-gradient(1200px 600px at 10% 20%, rgba(0, 188, 212, 0.1), transparent 60%),
+radial-gradient(900px 450px at 90% 80%, rgba(198, 255, 0, 0.08), transparent 65%),
+linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
+background-size: 200% 200%, 200% 200%, 100% 100%;
+animation: ff-ambient-pan 12s ease-in-out infinite alternate;
+}
 
-  .ff-neon-stroke {
-    stroke: color-mix(in oklab, var(--color-primary) 82%, white 18%);
-    stroke-width: 3.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: transparent;
-    vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 3px color-mix(in oklab, var(--color-primary) 70%, white 30%))
-      drop-shadow(0 0 10px color-mix(in oklab, var(--color-primary) 45%, black 55%))
-      drop-shadow(0 0 22px color-mix(in oklab, var(--color-primary) 28%, black 72%));
-  }
-  .ff-panel-stroke {
-    stroke: color-mix(in oklab, var(--color-primary) 60%, white 40%);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: transparent;
-    vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%))
-      drop-shadow(0 0 8px color-mix(in oklab, var(--color-primary) 30%, black 70%));
-  }
-  .ff-knob-glow {
-    filter: drop-shadow(0 0 4px color-mix(in oklab, var(--color-primary) 80%, white 20%))
-      drop-shadow(0 0 10px color-mix(in oklab, var(--color-primary) 50%, black 50%));
-  }
+  /* Vector neon stroke utilities for the SVG-rendered door */
+.ff-neon-stroke {
+stroke: color-mix(in oklab, var(--color-primary) 82%, white 18%);
+stroke-width: 3.5;
+stroke-linecap: round;
+stroke-linejoin: round;
+fill: transparent;
+vector-effect: non-scaling-stroke;
+filter: drop-shadow(0 0 3px color-mix(in oklab, var(--color-primary) 70%, white 30%))
+drop-shadow(0 0 10px color-mix(in oklab, var(--color-primary) 45%, black 55%))
+drop-shadow(0 0 22px color-mix(in oklab, var(--color-primary) 28%, black 72%));
+}
+.ff-panel-stroke {
+stroke: color-mix(in oklab, var(--color-primary) 60%, white 40%);
+stroke-width: 2.2;
+stroke-linecap: round;
+stroke-linejoin: round;
+fill: transparent;
+vector-effect: non-scaling-stroke;
+filter: drop-shadow(0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%))
+drop-shadow(0 0 8px color-mix(in oklab, var(--color-primary) 30%, black 70%));
+}
+.ff-knob-glow {
+filter: drop-shadow(0 0 4px color-mix(in oklab, var(--color-primary) 80%, white 20%))
+drop-shadow(0 0 10px color-mix(in oklab, var(--color-primary) 50%, black 50%));
+}
 
+  /* global sci-fi HUD background using provided template; subtle pan animation */
   /* --- MODIFIED BLOCK FOR THE NEW BACKGROUND --- */
-  .ff-hud-bg {
-    position: relative;
-    isolation: isolate;
-  }
-  .ff-hud-bg::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+.ff-hud-bg {
+position: relative;
+isolation: isolate;
+}
+.ff-hud-bg::before {
+content: "";
+position: fixed;
+inset: 0;
+z-index: -1;
+    /* Three animated layers: two moving radial glows + a subtle repeating HUD grid */
+    background: radial-gradient(1200px 700px at 12% 18%, rgba(0, 188, 212, 0.1), transparent 60%),
+      radial-gradient(900px 550px at 88% 82%, rgba(198, 255, 0, 0.07), transparent 65%), /* HUD grid lines */
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 188, 212, 0.06) 0px,
+        rgba(0, 188, 212, 0.06) 1px,
+        transparent 1px,
+        transparent 24px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 188, 212, 0.05) 0px,
+        rgba(0, 188, 212, 0.05) 1px,
+        transparent 1px,
+        transparent 32px
+      ), linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
+    background-size: 200% 200%, 200% 200%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: 0% 0%, 100% 100%, 0% 0%, 0% 100%, 0% 0%;
+    filter: saturate(120%) contrast(110%);
+    animation: ff-ambient-pan 18s ease-in-out infinite alternate;
     /* Use your HUD image as the background */
     background-image: url('/path/to/your/hud-image.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-  }
+}
   /* --- END MODIFIED BLOCK --- */
 
-  .ff-hero-gradient {
-    background: radial-gradient(900px 600px at 30% 20%, rgba(168, 85, 247, 0.28), transparent 55%),
-      radial-gradient(700px 500px at 75% 70%, rgba(59, 130, 246, 0.22), transparent 60%),
-      linear-gradient(180deg, #1a1030, #110a24 45%, #0b0818);
-  }
+  /* Purple onboarding hero background (no images) */
+.ff-hero-gradient {
+background: radial-gradient(900px 600px at 30% 20%, rgba(168, 85, 247, 0.28), transparent 55%),
+radial-gradient(700px 500px at 75% 70%, rgba(59, 130, 246, 0.22), transparent 60%),
+linear-gradient(180deg, #1a1030, #110a24 45%, #0b0818);
+}
 
-  .ff-theme-blue {
-    --color-primary: var(--neon-blue);
-  }
-  .ff-theme-green {
-    --color-primary: var(--neon-green);
-  }
-  .ff-theme-pink {
-    --color-primary: var(--neon-pink);
-  }
-  .ff-theme-red {
-    --color-primary: var(--neon-red);
-  }
-  .ff-theme-orange {
-    --color-primary: var(--neon-orange);
-  }
+  /* Five per-door color themes (override --color-primary used by door FX and question panel) */
+.ff-theme-blue {
+--color-primary: var(--neon-blue);
+}
+.ff-theme-green {
+--color-primary: var(--neon-green);
+}
+.ff-theme-pink {
+--color-primary: var(--neon-pink);
+}
+.ff-theme-red {
+--color-primary: var(--neon-red);
+}
+.ff-theme-orange {
+--color-primary: var(--neon-orange);
+}
 
-  .ff-theme-blue,
-  .ff-theme-green,
-  .ff-theme-pink,
-  .ff-theme-red,
-  .ff-theme-orange {
-    --ring: color-mix(in oklab, var(--color-primary) 75%, white 25%);
-  }
+  /* Slightly brighter ring tone derived from primary */
+.ff-theme-blue,
+.ff-theme-green,
+.ff-theme-pink,
+.ff-theme-red,
+.ff-theme-orange {
+--ring: color-mix(in oklab, var(--color-primary) 75%, white 25%);
+}
 
-  .ff-tech-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-  }
+  /* Add layering utility for the procedural canvas so it sits behind all content without blocking clicks */
+.ff-tech-bg {
+position: fixed;
+inset: 0;
+z-index: -2;
+pointer-events: none;
+}
 
-  .ff-bg-video {
-    position: fixed;
-    inset: 0;
-    z-index: -20;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .ff-video-scan {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.04) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    mix-blend-mode: overlay;
-    animation: ff-scanline 6s linear infinite;
-  }
+  /* background video layering + subtle scanline animation */
+.ff-bg-video {
+position: fixed;
+inset: 0;
+z-index: -20;
+pointer-events: none;
+overflow: hidden;
+}
+.ff-video-scan {
+position: absolute;
+inset: 0;
+pointer-events: none;
+background: linear-gradient(
+to bottom,
+rgba(255, 255, 255, 0) 0%,
+rgba(255, 255, 255, 0.04) 50%,
+rgba(255, 255, 255, 0) 100%
+);
+mix-blend-mode: overlay;
+animation: ff-scanline 6s linear infinite;
+}
 
-  [data-result="correct"] {
-    --color-primary: var(--neon-green);
-  }
-  [data-result="wrong"] {
-    --color-primary: var(--neon-red);
-  }
+  /* door result state overrides and stronger hover state */
+  /* Result color overrides (applied on the door wrapper) */
+[data-result="correct"] {
+--color-primary: var(--neon-green);
+}
+[data-result="wrong"] {
+--color-primary: var(--neon-red);
+}
 
-  .ff-door-hoverable {
-    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-  }
-  .ff-door-hoverable:hover:not([aria-disabled="true"]) {
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 10px 30px
-      color-mix(in oklab, var(--color-primary) 20%, black 80%);
-    filter: saturate(115%);
-  }
-  .ff-door-hoverable:active:not([aria-disabled="true"]) {
-    transform: translateY(0);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 80%, white 20%), 0 6px 18px
-      color-mix(in oklab, var(--color-primary) 18%, black 82%);
-  }
+  /* Stronger hover glow for doors */
+.ff-door-hoverable {
+transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.ff-door-hoverable:hover:not([aria-disabled="true"]) {
+transform: translateY(-1px);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 10px 30px
+color-mix(in oklab, var(--color-primary) 20%, black 80%);
+filter: saturate(115%);
+}
+.ff-door-hoverable:active:not([aria-disabled="true"]) {
+transform: translateY(0);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 80%, white 20%), 0 6px 18px
+color-mix(in oklab, var(--color-primary) 18%, black 82%);
+}
 
-  .ff-btn-primary {
-    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
-  }
-  .ff-btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 10px 24px rgba(0, 0, 0, 0.35);
-  }
-  .ff-btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 6px 16px rgba(0, 0, 0, 0.35);
-  }
+  /* Subtle hover treatment for primary actions (Start, Submit) */
+.ff-btn-primary {
+transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.ff-btn-primary:hover {
+transform: translateY(-1px);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+.ff-btn-primary:active {
+transform: translateY(0);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, white 30%), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
 
-  .ff-option-selected,
-  .ff-neon-option[aria-checked="true"] {
-    background: color-mix(in oklab, var(--color-primary) 15%, var(--color-card) 85%);
-    border-color: color-mix(in oklab, var(--color-primary) 80%, white 20%);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 0 18px
-      color-mix(in oklab, var(--color-primary) 30%, black 70%), inset 0 0 14px
-      color-mix(in oklab, var(--color-primary) 22%, black 78%);
-    color: color-mix(in oklab, white 96%, var(--color-primary) 4%);
-  }
+  /* add visible selected state for options and aria-checked support */
+.ff-option-selected,
+.ff-neon-option[aria-checked="true"] {
+background: color-mix(in oklab, var(--color-primary) 15%, var(--color-card) 85%);
+border-color: color-mix(in oklab, var(--color-primary) 80%, white 20%);
+box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, white 45%), 0 0 18px
+color-mix(in oklab, var(--color-primary) 30%, black 70%), inset 0 0 14px
+color-mix(in oklab, var(--color-primary) 22%, black 78%);
+color: color-mix(in oklab, white 96%, var(--color-primary) 4%);
+}
 
-  .ff-neon-option[aria-checked="true"] .ff-opt-letter,
-  .ff-option-selected .ff-opt-letter {
-    color: color-mix(in oklab, var(--color-primary) 85%, white 15%) !important;
-    text-shadow: 0 0 8px color-mix(in oklab, var(--color-primary) 45%, black 55%), 0 0 14px
-      color-mix(in oklab, var(--color-primary) 25%, black 75%);
-  }
+  /* Make the label letter pop when selected */
+.ff-neon-option[aria-checked="true"] .ff-opt-letter,
+.ff-option-selected .ff-opt-letter {
+color: color-mix(in oklab, var(--color-primary) 85%, white 15%) !important;
+text-shadow: 0 0 8px color-mix(in oklab, var(--color-primary) 45%, black 55%), 0 0 14px
+color-mix(in oklab, var(--color-primary) 25%, black 75%);
+}
 
-  .ff-neon-option[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  /* ensure disabled options don’t look selected */
+.ff-neon-option[disabled] {
+opacity: 0.6;
+cursor: not-allowed;
+}
 
   .hud-overlay {
     position: fixed;
@@ -564,91 +635,91 @@
 }
 
 @keyframes ff-rays-burst {
-  0% {
-    opacity: 0;
-    transform: scaleX(0.9) translateX(-4px);
-    filter: blur(2.5px) brightness(1.1);
-  }
-  30% {
-    opacity: 0.9;
-    transform: scaleX(1.02) translateX(0px);
-    filter: blur(2px) brightness(1.35);
-  }
-  100% {
-    opacity: 0.45;
-    transform: scaleX(1) translateX(0);
-    filter: blur(2px) brightness(1.2);
-  }
+0% {
+opacity: 0;
+transform: scaleX(0.9) translateX(-4px);
+filter: blur(2.5px) brightness(1.1);
+}
+30% {
+opacity: 0.9;
+transform: scaleX(1.02) translateX(0px);
+filter: blur(2px) brightness(1.35);
+}
+100% {
+opacity: 0.45;
+transform: scaleX(1) translateX(0);
+filter: blur(2px) brightness(1.2);
+}
 }
 
 @keyframes ff-floor-pulse {
-  0% {
-    opacity: 0.22;
-    transform: scaleX(0.9);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scaleX(1.05);
-  }
-  100% {
-    opacity: 0.28;
-    transform: translate3d(var(--tx, 90px), var(--ty, -24px), 0) scale(0.95) rotate(var(--rot, 28deg));
-  }
+0% {
+opacity: 0.22;
+transform: scaleX(0.9);
+}
+50% {
+opacity: 0.5;
+transform: scaleX(1.05);
+}
+100% {
+opacity: 0.28;
+transform: translate3d(var(--tx, 90px), var(--ty, -24px), 0) scale(0.95) rotate(var(--rot, 28deg));
+}
 }
 
 @keyframes ff-particle-burst {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.4) rotate(0deg);
-  }
-  12% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(0.8) rotate(8deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(var(--tx, 90px), var(--ty, -24px), 0) scale(0.95) rotate(var(--rot, 28deg));
-  }
+0% {
+opacity: 0;
+transform: translate3d(0, 0, 0) scale(0.4) rotate(0deg);
+}
+12% {
+opacity: 1;
+transform: translate3d(0, 0, 0) scale(0.8) rotate(8deg);
+}
+100% {
+opacity: 0;
+transform: translate3d(var(--tx, 90px), var(--ty, -24px), 0) scale(0.95) rotate(var(--rot, 28deg));
+}
 }
 
 @keyframes ff-bg-pulse {
-  0%,
-  100% {
-    transform: scale(0.98);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.02);
-    opacity: 0.7;
-  }
+0%,
+100% {
+transform: scale(0.98);
+opacity: 0.55;
+}
+50% {
+transform: scale(1.02);
+opacity: 0.7;
+}
 }
 @keyframes ff-bg-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 0.95;
-  }
+0%,
+100% {
+transform: scale(1);
+opacity: 0.8;
+}
+50% {
+transform: scale(1.04);
+opacity: 0.95;
+}
 }
 @keyframes ff-ambient-pan {
-  0% {
-    background-position: 0% 0%, 100% 100%, 0% 0%, 0% 100%, 0% 0%;
-  }
-  100% {
-    background-position: 100% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 0%;
-  }
+0% {
+background-position: 0% 0%, 100% 100%, 0% 0%, 0% 100%, 0% 0%;
+}
+100% {
+background-position: 100% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 0%;
+}
 }
 
 @keyframes ff-scanline {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateY(100%);
-    opacity: 0.35;
-  }
+0% {
+transform: translateY(-100%);
+opacity: 0.35;
+}
+100% {
+transform: translateY(100%);
+opacity: 0.35;
+}
 }
