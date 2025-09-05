@@ -1,100 +1,130 @@
 "use client"
 
-import { Fragment, useState } from "react"
-import { Dialog, DialogPanel, DialogTitle, Radio, RadioGroup } from "@headlessui/react"
-import { useGame } from "./game-context"
-import { Button } from "./ui/button"
-import type { Question } from "./game-context"
+import { ReactNode, createContext, useContext, useEffect, useMemo, useReducer, useState } from "react"
 
-type QuestionModalProps = {
-  isOpen: boolean
-  onClose: () => void
-  door: {
-    doorGlobalIndex: number
-    question: Question
+// UPDATED: This type now matches your new questions.json format
+export type Question = {
+  id: number;
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  isTrap: boolean;
+};
+
+export type GameState = {
+  teamName: string | null
+  startTime: number | null
+  endTime: number | null
+  answeredDoorIds: number[]
+  score: number
+  results: { [doorId: number]: 'correct' | 'wrong' }
+}
+
+type GameContextType = {
+  state: GameState
+  questions: Question[]
+  isLoading: boolean
+  maxRoomUnlocked: number
+  setTeamName: (name: string) => void
+  startGame: () => void
+  finishGame: () => void
+  submitAnswer: (doorId: number, isCorrect: boolean) => void
+  gameName: string
+  tagline: string
+}
+
+const GameContext = createContext<GameContextType | undefined>(undefined)
+
+const initialState: GameState = {
+  teamName: null,
+  startTime: null,
+  endTime: null,
+  answeredDoorIds: [],
+  score: 0,
+  results: {},
+}
+
+type Action =
+  | { type: 'SET_TEAM_NAME'; payload: string }
+  | { type: 'START_GAME' }
+  | { type: 'FINISH_GAME' }
+  | { type: 'SUBMIT_ANSWER'; payload: { doorId: number; isCorrect: boolean } }
+
+function gameReducer(state: GameState, action: Action): GameState {
+  switch (action.type) {
+    case 'SET_TEAM_NAME':
+      return { ...state, teamName: action.payload }
+    case 'START_GAME':
+      return { ...initialState, teamName: state.teamName, startTime: Date.now() }
+    case 'FINISH_GAME':
+      return { ...state, endTime: Date.now() }
+    case 'SUBMIT_ANSWER': {
+      const { doorId, isCorrect } = action.payload
+      if (state.answeredDoorIds.includes(doorId)) {
+        return state
+      }
+      return {
+        ...state,
+        score: state.score + (isCorrect ? 5 : 0),
+        answeredDoorIds: [...state.answeredDoorIds, doorId],
+        results: { ...state.results, [doorId]: isCorrect ? 'correct' : 'wrong' },
+      }
+    }
+    default:
+      return state
   }
 }
 
-export default function QuestionModal({ isOpen, onClose, door }: QuestionModalProps) {
-  const { submitAnswer } = useGame()
-  const [selectedOption, setSelectedOption] = useState<string | null>(null)
+export function GameProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(gameReducer, initialState)
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  const { question, options, answer: correctAnswer, explanation } = door.question
+  useEffect(() => {
+    fetch('/questions.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setQuestions(data)
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.error("Failed to load questions:", err)
+        setIsLoading(false)
+      })
+  }, [])
 
-  const handleSelectOption = (option: string) => {
-    setSelectedOption(option)
-    const isCorrect = option === correctAnswer
-    submitAnswer(door.doorGlobalIndex, isCorrect)
+  const maxRoomUnlocked = useMemo(
+    () => Math.floor(state.answeredDoorIds.length / 5) + 1,
+    [state.answeredDoorIds.length],
+  )
 
-    setTimeout(() => {
-      onClose()
-      setSelectedOption(null)
-    }, 1200) // wait a moment before closing to show feedback
+  const setTeamName = (name: string) => dispatch({ type: 'SET_TEAM_NAME', payload: name })
+  const startGame = () => dispatch({ type: 'START_GAME' })
+  const finishGame = () => dispatch({ type: 'FINISH_GAME' })
+  const submitAnswer = (doorId: number, isCorrect: boolean) => {
+    dispatch({ type: 'SUBMIT_ANSWER', payload: { doorId, isCorrect } })
   }
 
-  return (
-    <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={onClose}>
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div className="flex min-h-full items-center justify-center p-4">
-          <DialogPanel
-            as="div"
-            className="ff-neon-panel relative w-full max-w-lg rounded-xl p-6 text-foreground"
-          >
-            <DialogTitle as="h3" className="font-serif text-lg font-medium text-primary">
-              Door {door.doorGlobalIndex + 1} Challenge
-            </DialogTitle>
-            <div className="ff-halo" />
+  const value = {
+    state,
+    questions,
+    isLoading,
+    maxRoomUnlocked,
+    setTeamName,
+    startGame,
+    finishGame,
+    submitAnswer,
+    gameName: "Fragment Forge",
+    tagline: "Where the first piece of the ultimate code is shaped.",
+  }
 
-            <div className="mt-4">
-              <p className="text-lg">{question}</p>
-            </div>
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>
+}
 
-            <RadioGroup
-              value={selectedOption}
-              onChange={handleSelectOption}
-              aria-label="Question options"
-              className="mt-4 space-y-3"
-            >
-              {options.map((option) => (
-                <Radio
-                  key={option}
-                  value={option}
-                  disabled={!!selectedOption}
-                  className="ff-neon-option group relative flex cursor-pointer rounded-lg px-4 py-3 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-ring data-[focus]:ring-offset-2 data-[focus]:ring-offset-background"
-                >
-                  {({ checked }) => (
-                    <>
-                      <span className="flex w-full items-center justify-between">
-                        <span className="text-base font-medium">{option}</span>
-                        {checked && selectedOption ? (
-                          <div className="shrink-0 text-white">
-                            {selectedOption === correctAnswer ? (
-                              <svg className="h-6 w-6 fill-green-400" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                              </svg>
-                            ) : (
-                              <svg className="h-6 w-6 fill-red-400" viewBox="0 0 24 24">
-                                <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z" />
-                              </svg>
-                            )}
-                          </div>
-                        ) : null}
-                      </span>
-                    </>
-                  )}
-                </Radio>
-              ))}
-            </RadioGroup>
-            {selectedOption && (
-              <div className="mt-4 rounded-md border border-border bg-black/30 p-3 text-sm">
-                <p className="font-semibold text-primary">Explanation:</p>
-                <p className="mt-1 text-muted-foreground">{explanation}</p>
-              </div>
-            )}
-          </DialogPanel>
-        </div>
-      </div>
-    </Dialog>
-  )
+export function useGame() {
+  const context = useContext(GameContext)
+  if (context === undefined) {
+    throw new Error("useGame must be used within a GameProvider")
+  }
+  return context
 }
