@@ -17,12 +17,13 @@ export default function HomePage() {
     if (!name) return
     setTeamName(name)
     startGame()
-    router.push("/game/1")
+    // --- THIS IS THE ONLY CHANGE IN THIS FILE ---
+    // Navigate to the new start page instead of the first game room.
+    router.push("/start")
   }
 
   return (
     <main className="min-h-screen text-foreground relative">
-      {/* <TechBg opacity={0.75} /> */}
       <Header />
       <section className="mx-auto max-w-3xl px-4 py-12">
         <Card className="relative mx-auto w-full rounded-2xl bg-card ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
@@ -34,9 +35,9 @@ export default function HomePage() {
             {/* use tech heading font via font-serif (Orbitron mapped to --font-playfair) */}
             <CardTitle className="text-3xl font-semibold font-serif tracking-wide">{gameName}</CardTitle>
             <CardDescription className="mt-1 font-medium text-yellow-300/90">
-              Where the first piece of the ultimate code is shaped.
+              {tagline}
             </CardDescription>
-            <p className="mt-3 text-sm text-muted-foreground max-w-prose mx-auto">{tagline}</p>
+            <p className="mt-3 text-sm text-muted-foreground max-w-prose mx-auto">Enter your team name to begin.</p>
           </CardHeader>
           <CardContent className="space-y-5">
             <label className="block text-sm font-medium">
