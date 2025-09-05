@@ -19,20 +19,17 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
   const { submitAnswer } = useGame()
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
 
-  // UPDATED: Destructure the new properties from the question object
-  const { prompt, options, correctIndex } = door.question
-  const correctAnswer = options[correctIndex]
+  const { question, options, answer: correctAnswer, explanation } = door.question
 
   const handleSelectOption = (option: string) => {
     setSelectedOption(option)
-    // UPDATED: Check for correctness by comparing the selected option to the correct answer string
     const isCorrect = option === correctAnswer
     submitAnswer(door.doorGlobalIndex, isCorrect)
 
     setTimeout(() => {
       onClose()
       setSelectedOption(null)
-    }, 1200) 
+    }, 1200) // wait a moment before closing to show feedback
   }
 
   return (
@@ -50,8 +47,7 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
             <div className="ff-halo" />
 
             <div className="mt-4">
-              {/* UPDATED: Display the 'prompt' instead of 'question' */}
-              <p className="text-lg">{prompt}</p>
+              <p className="text-lg">{question}</p>
             </div>
 
             <RadioGroup
@@ -60,7 +56,7 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
               aria-label="Question options"
               className="mt-4 space-y-3"
             >
-              {options.map((option, index) => (
+              {options.map((option) => (
                 <Radio
                   key={option}
                   value={option}
@@ -70,13 +66,7 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
                   {({ checked }) => (
                     <>
                       <span className="flex w-full items-center justify-between">
-                        <span className="flex items-center text-base font-medium">
-                          {/* Added letters A, B, C, D for options */}
-                          <span className="mr-3 flex h-6 w-6 items-center justify-center rounded-sm border border-primary/50 text-xs font-semibold text-primary/80">
-                            {String.fromCharCode(65 + index)}
-                          </span>
-                          {option}
-                        </span>
+                        <span className="text-base font-medium">{option}</span>
                         {checked && selectedOption ? (
                           <div className="shrink-0 text-white">
                             {selectedOption === correctAnswer ? (
@@ -96,6 +86,12 @@ export default function QuestionModal({ isOpen, onClose, door }: QuestionModalPr
                 </Radio>
               ))}
             </RadioGroup>
+            {selectedOption && (
+              <div className="mt-4 rounded-md border border-border bg-black/30 p-3 text-sm">
+                <p className="font-semibold text-primary">Explanation:</p>
+                <p className="mt-1 text-muted-foreground">{explanation}</p>
+              </div>
+            )}
           </DialogPanel>
         </div>
       </div>
