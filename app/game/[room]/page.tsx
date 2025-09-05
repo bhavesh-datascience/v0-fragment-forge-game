@@ -1,20 +1,22 @@
 "use client"
 
-import { useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
-import Header from "@/components/header"
 import Door from "@/components/door"
 import { useGame } from "@/components/game-context"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useParams, useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 const DOOR_COLORS = ["#00e5ff", "#39ff14", "#ff4dff", "#ff2b2b", "#ffa600"] as const
+const DOORS_PER_ROOM = 5
 
 export default function RoomPage() {
+  const router = useRouter()
   const params = useParams<{ room: string }>()
   const roomNum = Math.max(1, Math.min(10, Number(params.room || 1)))
-  const { state, questions, finishGame, maxRoomUnlocked } = useGame()
-  const router = useRouter()
+  // Destructure isLoading from the context
+  const { state, questions, isLoading, finishGame, maxRoomUnlocked } = useGame()
 
   useEffect(() => {
     if (!state.teamName || !state.startTime) {
@@ -28,24 +30,37 @@ export default function RoomPage() {
     }
   }, [maxRoomUnlocked, roomNum, router])
 
-  const startIndex = (roomNum - 1) * 5
-  const answeredCountInRoom = state.answeredDoorIds.filter((id) => id >= startIndex && id < startIndex + 5).length
-  const allAnsweredInRoom = answeredCountInRoom === 5
-  const allAnsweredOverall = state.answeredDoorIds.length === 50
+  // Return early if questions are not loaded yet to prevent errors
+  if (isLoading || questions.length === 0) {
+    return (
+      <main className="min-h-screen text-foreground relative flex items-center justify-center">
+        <p>Loading Mission Data...</p>
+      </main>
+    )
+  }
+
+  const startIndex = (roomNum - 1) * DOORS_PER_ROOM
+  const answeredCountInRoom = state.answeredDoorIds.filter(
+    (id) => id >= startIndex && id < startIndex + DOORS_PER_ROOM
+  ).length
+  const allAnsweredOverall = state.answeredDoorIds.length === questions.length
 
   useEffect(() => {
-    if (allAnsweredOverall) {
+    if (allAnsweredOverall && state.startTime) {
       finishGame()
       router.replace("/results")
     }
-  }, [allAnsweredOverall, finishGame, router])
+  }, [allAnsweredOverall, finishGame, router, state.startTime])
+
+  if (!state.teamName || !state.startTime) {
+    return null
+  }
 
   return (
     <main className="min-h-screen text-foreground relative">
       <Header />
       <section className="mx-auto max-w-6xl px-4 py-8">
         <div className="grid gap-6 md:grid-cols-[160px_1fr]">
-          {/* --- CHANGE 1: Increased the blur effect on the sidebar --- */}
           <aside aria-label="Rooms" className="rounded-xl bg-card/50 p-3 backdrop-blur-lg ring-1 ring-white/10">
             <nav className="flex flex-col gap-2">
               {Array.from({ length: 10 }).map((_, i) => {
@@ -80,21 +95,27 @@ export default function RoomPage() {
             </nav>
           </aside>
 
-          {/* --- CHANGE 2: Converted the main panel to a blurred "frosted glass" panel --- */}
           <div className="flex flex-col items-center rounded-xl bg-card/50 p-6 backdrop-blur-lg ring-1 ring-white/10">
             <div className="mb-4">
               <h2 className="font-serif text-2xl font-semibold">Room {roomNum}</h2>
               <p className="text-muted-foreground">Choose a door to reveal its challenge.</p>
             </div>
 
-            {/* Doors grid */}
             <div className="mt-6 grid grid-cols-2 justify-items-center gap-10 sm:grid-cols-3 md:grid-cols-5">
-              {Array.from({ length: 5 }).map((_, i) => {
+              {Array.from({ length: DOORS_PER_ROOM }).map((_, i) => {
                 const doorGlobalIndex = startIndex + i
                 const colorHex = DOOR_COLORS[i % DOOR_COLORS.length]
+                const result = state.results?.[doorGlobalIndex]
+                // Get the specific question for this door
+                const question = questions[doorGlobalIndex]
+                
+                // Don't render a door if the question is missing
+                if (!question) return null
+
                 return (
-                  <div key={i} style={{ ["--color-primary" as any]: colorHex }}>
-                    <Door room={roomNum} indexInRoom={i} doorGlobalIndex={doorGlobalIndex} colorHex={colorHex} />
+                  <div key={i} style={{ ["--color-primary" as any]: colorHex }} data-result={result}>
+                    {/* Pass the question down as a prop */}
+                    <Door doorGlobalIndex={doorGlobalIndex} question={question} />
                   </div>
                 )
               })}
@@ -118,7 +139,7 @@ export default function RoomPage() {
             </div>
 
             <div className="mt-6 text-sm text-muted-foreground">
-              Answered in this room: {answeredCountInRoom} / 5 • Total answered: {state.answeredDoorIds.length} /{" "}
+              Answered in this room: {answeredCountInRoom} / {DOORS_PER_ROOM} • Total answered: {state.answeredDoorIds.length} /{" "}
               {questions.length || 50}
             </div>
           </div>
