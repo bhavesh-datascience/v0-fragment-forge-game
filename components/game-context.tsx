@@ -1,189 +1,130 @@
 "use client"
 
-import type React from "react"
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react"
-import useSWR from "swr"
+import { ReactNode, createContext, useContext, useEffect, useMemo, useReducer, useState } from "react"
 
-type Question = {
-  id: number
-  prompt: string
-  options: string[]
-  correctIndex: number
-  isTrap: boolean
-}
+// UPDATED: This type now matches your new questions.json format
+export type Question = {
+  id: number;
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  isTrap: boolean;
+};
 
-type AnswerLog = {
-  room: number
-  door: number
-  doorGlobalIndex: number
-  questionId: number
-  prompt: string
-  options: string[]
-  correctIndex: number
-  selectedIndex: number
-  correct: boolean
-  doorType: "trap" | "normal"
-  deltaScore: number
-  answeredAt: string
-}
-
-type GameState = {
-  teamName: string
-  startTime?: string
-  endTime?: string
-  score: number
-  answers: AnswerLog[]
+export type GameState = {
+  teamName: string | null
+  startTime: number | null
+  endTime: number | null
   answeredDoorIds: number[]
-  maxRoomUnlocked: number
+  score: number
+  results: { [doorId: number]: 'correct' | 'wrong' }
 }
 
-type GameContextValue = {
-  gameName: string
-  tagline: string
+type GameContextType = {
   state: GameState
   questions: Question[]
+  isLoading: boolean
+  maxRoomUnlocked: number
   setTeamName: (name: string) => void
   startGame: () => void
   finishGame: () => void
-  answerDoor: (args: { room: number; door: number; doorGlobalIndex: number; selectedIndex: number }) => void
-  isDoorAnswered: (doorGlobalIndex: number) => boolean
-  resetGame: () => void
-  sessionJson: () => any
-  maxRoomUnlocked: number
+  submitAnswer: (doorId: number, isCorrect: boolean) => void
+  gameName: string
+  tagline: string
 }
 
-const STORAGE_KEY = "fragment-forge-state"
-const fetcher = (url: string) => fetch(url).then((r) => r.json())
+const GameContext = createContext<GameContextType | undefined>(undefined)
 
-const defaultState: GameState = {
-  teamName: "",
-  score: 0,
-  answers: [],
+const initialState: GameState = {
+  teamName: null,
+  startTime: null,
+  endTime: null,
   answeredDoorIds: [],
-  maxRoomUnlocked: 0,
+  score: 0,
+  results: {},
 }
 
-const GameContext = createContext<GameContextValue | null>(null)
+type Action =
+  | { type: 'SET_TEAM_NAME'; payload: string }
+  | { type: 'START_GAME' }
+  | { type: 'FINISH_GAME' }
+  | { type: 'SUBMIT_ANSWER'; payload: { doorId: number; isCorrect: boolean } }
 
-export function GameProvider({ children }: { children: React.ReactNode }) {
-  const { data: questions = [] } = useSWR<Question[]>("/data/questions.json", fetcher)
-  const [state, setState] = useState<GameState>(defaultState)
-  const loadedRef = useRef(false)
+function gameReducer(state: GameState, action: Action): GameState {
+  switch (action.type) {
+    case 'SET_TEAM_NAME':
+      return { ...state, teamName: action.payload }
+    case 'START_GAME':
+      return { ...initialState, teamName: state.teamName, startTime: Date.now() }
+    case 'FINISH_GAME':
+      return { ...state, endTime: Date.now() }
+    case 'SUBMIT_ANSWER': {
+      const { doorId, isCorrect } = action.payload
+      if (state.answeredDoorIds.includes(doorId)) {
+        return state
+      }
+      return {
+        ...state,
+        score: state.score + (isCorrect ? 5 : 0),
+        answeredDoorIds: [...state.answeredDoorIds, doorId],
+        results: { ...state.results, [doorId]: isCorrect ? 'correct' : 'wrong' },
+      }
+    }
+    default:
+      return state
+  }
+}
 
-  // Load persisted session
+export function GameProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(gameReducer, initialState)
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
-    if (loadedRef.current) return
-    loadedRef.current = true
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY)
-      if (raw) setState(JSON.parse(raw))
-    } catch {}
+    fetch('/questions.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setQuestions(data)
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.error("Failed to load questions:", err)
+        setIsLoading(false)
+      })
   }, [])
 
-  // Persist session
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-    } catch {}
-  }, [state])
+  const maxRoomUnlocked = useMemo(
+    () => Math.floor(state.answeredDoorIds.length / 5) + 1,
+    [state.answeredDoorIds.length],
+  )
 
-  const setTeamName = (name: string) => setState((s) => ({ ...s, teamName: name }))
-
-  const startGame = () => {
-    setState((s) => ({
-      ...s,
-      score: 0,
-      answers: [],
-      answeredDoorIds: [],
-      startTime: new Date().toISOString(),
-      endTime: undefined,
-      maxRoomUnlocked: 1,
-    }))
+  const setTeamName = (name: string) => dispatch({ type: 'SET_TEAM_NAME', payload: name })
+  const startGame = () => dispatch({ type: 'START_GAME' })
+  const finishGame = () => dispatch({ type: 'FINISH_GAME' })
+  const submitAnswer = (doorId: number, isCorrect: boolean) => {
+    dispatch({ type: 'SUBMIT_ANSWER', payload: { doorId, isCorrect } })
   }
 
-  const finishGame = () => setState((s) => ({ ...s, endTime: new Date().toISOString() }))
-
-  // Scoring:
-  // - Correct on any door: +5
-  // - Incorrect on trap door: -5
-  // - Incorrect on normal door: 0
-  const answerDoor: GameContextValue["answerDoor"] = ({ room, door, doorGlobalIndex, selectedIndex }) => {
-    if (!questions.length) return
-    if (state.answeredDoorIds.includes(doorGlobalIndex)) return
-    const q = questions[doorGlobalIndex]
-    if (!q) return
-    const correct = selectedIndex === q.correctIndex
-    const isTrap = q.isTrap
-    const delta = correct ? 5 : isTrap ? -5 : 0
-
-    const log: AnswerLog = {
-      room,
-      door,
-      doorGlobalIndex,
-      questionId: q.id,
-      prompt: q.prompt,
-      options: q.options,
-      correctIndex: q.correctIndex,
-      selectedIndex,
-      correct,
-      doorType: isTrap ? "trap" : "normal",
-      deltaScore: delta,
-      answeredAt: new Date().toISOString(),
-    }
-
-    setState((s) => {
-      const nextAnswered = [...s.answeredDoorIds, doorGlobalIndex]
-      const roomStart = (room - 1) * 5
-      const completedInRoom = nextAnswered.filter((id) => id >= roomStart && id < roomStart + 5).length === 5
-      const nextUnlocked = completedInRoom ? Math.max(s.maxRoomUnlocked, Math.min(10, room + 1)) : s.maxRoomUnlocked
-
-      return {
-        ...s,
-        score: s.score + delta,
-        answers: [...s.answers, log],
-        answeredDoorIds: nextAnswered,
-        maxRoomUnlocked: nextUnlocked,
-      }
-    })
-  }
-
-  const isDoorAnswered = (doorGlobalIndex: number) => state.answeredDoorIds.includes(doorGlobalIndex)
-
-  const resetGame = () => setState(defaultState)
-
-  const sessionJson = () => ({
+  const value = {
+    state,
+    questions,
+    isLoading,
+    maxRoomUnlocked,
+    setTeamName,
+    startGame,
+    finishGame,
+    submitAnswer,
     gameName: "Fragment Forge",
     tagline: "Where the first piece of the ultimate code is shaped.",
-    teamName: state.teamName,
-    startTime: state.startTime,
-    endTime: state.endTime,
-    totalScore: state.score,
-    answers: state.answers,
-  })
-
-  const value: GameContextValue = useMemo(
-    () => ({
-      gameName: "Fragment Forge",
-      tagline: "Where the first piece of the ultimate code is shaped.",
-      state,
-      questions,
-      setTeamName,
-      startGame,
-      finishGame,
-      answerDoor,
-      isDoorAnswered,
-      resetGame,
-      sessionJson,
-      maxRoomUnlocked: state.maxRoomUnlocked,
-    }),
-    [state, questions],
-  )
+  }
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>
 }
 
 export function useGame() {
-  const ctx = useContext(GameContext)
-  if (!ctx) throw new Error("useGame must be used within GameProvider")
-  return ctx
+  const context = useContext(GameContext)
+  if (context === undefined) {
+    throw new Error("useGame must be used within a GameProvider")
+  }
+  return context
 }
