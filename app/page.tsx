@@ -1,89 +1,33 @@
-"use client"
-
-import { useRouter } from "next/navigation"
-import { useState } from "react"
 import { useGame } from "@/components/game-context"
-import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
+// import TechBg from "@/components/tech-bg"
 
-export default function HomePage() {
-  const router = useRouter()
-  const { gameName, tagline, state, setTeamName, startGame } = useGame()
-  const [localTeam, setLocalTeam] = useState(state.teamName ?? "")
+const DOOR_COLORS = ["#00e5ff", "#39ff14", "#ff4dff", "#ff2b2b", "#ffa600"] as const
 
-  const handleStart = () => {
-    const name = localTeam.trim()
-    if (!name) return
-    setTeamName(name)
-    startGame()
-    // --- THIS IS THE ONLY CHANGE IN THIS FILE ---
-    // Navigate to the new start page instead of the first game room.
-    router.push("/start")
-  }
+@@ -42,12 +41,12 @@ export default function RoomPage() {
+}, [allAnsweredOverall, finishGame, router])
 
-  return (
+return (
+    <main className="min-h-screen ff-room-ambient text-foreground relative">
+      {/* <TechBg opacity={0.8} /> */}
     <main className="min-h-screen text-foreground relative">
-      <Header />
-      <section className="mx-auto max-w-3xl px-4 py-12">
-        <Card className="relative mx-auto w-full rounded-2xl bg-card ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
-          <CardHeader className="text-center">
-            {/* badge */}
-            <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-[rgba(255,184,0,0.2)] ring-1 ring-[rgba(255,184,0,0.4)] shadow-[0_0_20px_rgba(255,184,0,0.35)]">
-              <span className="text-yellow-300 text-lg">✦</span>
-            </div>
-            {/* use tech heading font via font-serif (Orbitron mapped to --font-playfair) */}
-            <CardTitle className="text-3xl font-semibold font-serif tracking-wide">{gameName}</CardTitle>
-            <CardDescription className="mt-1 font-medium text-yellow-300/90">
-              {tagline}
-            </CardDescription>
-            <p className="mt-3 text-sm text-muted-foreground max-w-prose mx-auto">Enter your team name to begin.</p>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            <label className="block text-sm font-medium">
-              <span className="inline-flex items-center gap-2">
-                <span className="opacity-80">Team Name</span>
-              </span>
-              <input
-                autoFocus
-                type="text"
-                value={localTeam}
-                onChange={(e) => setLocalTeam(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault()
-                    handleStart()
-                  }
-                }}
-                placeholder="Enter your team name..."
-                className="mt-1 w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 outline-none focus:ring-2 focus:ring-[rgba(168,85,247,0.6)]"
-              />
-            </label>
-            <Button
-              type="button"
-              className="ff-btn-primary h-12 w-full cursor-pointer bg-foreground/90 text-background hover:bg-foreground active:bg-foreground/80 font-semibold tracking-wide"
-              disabled={!localTeam.trim()}
-              onClick={handleStart}
-            >
-              {/* simple play icon */}
-              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" className="mr-2">
-                <path fill="currentColor" d="M8 5v14l11-7z" />
-              </svg>
-              Begin Your Quest
-            </Button>
+<Header />
+<section className="mx-auto max-w-6xl px-4 py-8">
+<div className="grid gap-6 md:grid-cols-[160px_1fr]">
+          <aside aria-label="Rooms" className="rounded-xl bg-card/40 p-3 backdrop-blur-sm ring-1 ring-white/10">
+          {/* --- CHANGE 1: Increased the blur effect on the sidebar --- */}
+          <aside aria-label="Rooms" className="rounded-xl bg-card/50 p-3 backdrop-blur-lg ring-1 ring-white/10">
+<nav className="flex flex-col gap-2">
+{Array.from({ length: 10 }).map((_, i) => {
+const n = i + 1
+@@ -81,7 +80,8 @@ export default function RoomPage() {
+</nav>
+</aside>
 
-            <div className="rounded-xl border border-white/10 bg-black/25 p-4">
-              <p className="text-center font-semibold text-yellow-300 mb-2">Game Rules</p>
-              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-                <li>Answer correctly: +5 points</li>
-                <li>Answer incorrectly on trap doors: -5 points</li>
-                <li>50 doors across 10 chambers</li>
-                <li>Unlock chambers as you progress</li>
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-    </main>
-  )
-}
+          <div>
+          {/* --- CHANGE 2: Converted the main panel to a blurred "frosted glass" panel --- */}
+          <div className="flex flex-col items-center rounded-xl bg-card/50 p-6 backdrop-blur-lg ring-1 ring-white/10">
+<div className="mb-4">
+<h2 className="font-serif text-2xl font-semibold">Room {roomNum}</h2>
+<p className="text-muted-foreground">Choose a door to reveal its challenge.</p>
